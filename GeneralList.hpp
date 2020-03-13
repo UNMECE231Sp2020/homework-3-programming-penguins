@@ -68,7 +68,7 @@ class List {
 			}
 			else {
 				newNode->next=_front;
-				_front->back = newNode;
+				_front->prev = newNode;
 			}
 
 			_front=newNode;
