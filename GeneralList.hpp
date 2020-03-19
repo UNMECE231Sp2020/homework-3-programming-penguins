@@ -42,11 +42,16 @@ class List {
 		}
 
 		List List::operator=(const List &x){
-			List &Temp = x;
-			while(Temp != NULL){
-				size = x.size;
-				front = x.front;
-				back = x.back;
+			size = x.size;
+			front = x.front;
+			back = x.back;
+			Dlist *temp;
+			//while(!empty()) {
+			//	pop_front();
+			//}
+			for(temp=x.front; temp!=nullptr; temp=temp->next) {
+				push_back(temp->value);
+
 			}
 			return *this;
 		}
@@ -164,7 +169,7 @@ class List {
 
 		//Modify this
 		void print() {
-			Llist *temp;
+			Dlist *temp;
 			for(temp=_front; temp!=nullptr; temp=temp->next) {
 				std::cout << temp->value << " ";
 			}
