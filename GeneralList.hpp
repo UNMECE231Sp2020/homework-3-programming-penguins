@@ -1,5 +1,4 @@
 #include <iostream>
-
 template <class Data>
 class List {
 	private:
