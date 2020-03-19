@@ -148,14 +148,12 @@ class List {
 		void pop_back() {
 			Dlist *back_to_remove = _back;
 			_back = back->prev;
-			if(_back==_front) {
-				_back = nullptr;
-				front->next = nullptr;
+			if(_back==nullptr) {
+				_front = nullptr;
 			}
 			else {
 				_back->next = nullptr;
 			}
-
 			delete back_to_remove;
 			_size-=1;
 		}
@@ -169,6 +167,13 @@ class List {
 		void print() {
 			Dlist *temp;
 			for(temp=_front; temp!=nullptr; temp=temp->next) {
+				std::cout << temp->value << " ";
+			}
+			std::cout << std::endl;
+		}
+		void print_back() {
+			Dlist *temp;
+			for(temp=_back; temp!=nullptr; temp=temp->prev) {
 				std::cout << temp->value << " ";
 			}
 			std::cout << std::endl;
