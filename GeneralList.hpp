@@ -166,6 +166,9 @@ class List {
 			}
 			std::cout << std::endl;
 		}
+		//TODO: Just declare them here, do not try to implement
+		//friend functions are INDEPENDENT of the class
+		//so they must be implemented outside of the class
 		template<typename V> friend bool operator==(const List<V> &a, const List<V> &b){
 
 			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
@@ -194,6 +197,8 @@ class List {
 			}
 		}
 };
+//TODO: you are on the right track here
+
 /*
 		template<typename V> bool operator==(const List<V> &a, const List<V> &b){
 			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
