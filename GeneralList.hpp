@@ -42,11 +42,16 @@ class List {
 		}
 
 		List List::operator=(const List &x){
-			size = x.size;
-			front = x.front;
-			back = x.back;
+			List &Temp = x;
+			while(Temp != NULL){
+				size = x.size;
+				front = x.front;
+				back = x.back;
+			}
 			return *this;
 		}
+		
+		/*
 		bool List::operator==(const List &x)
 		{
 			if(x.size == size && front == x.front && back == x.back)
@@ -58,7 +63,7 @@ class List {
 				return false;
 			}
 		}
-		
+		*/
 
 		bool List::operator!=(const List &x)
 		{
