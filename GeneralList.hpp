@@ -40,7 +40,7 @@ class List {
 		
 		}
 
-		List List::operator=(const List &x){
+		List &operator=(const List &x){
 			size = x.size;
 			front = x.front;
 			back = x.back;
@@ -67,33 +67,29 @@ class List {
 		}
 		*/
 
-		template<typename V> friend bool List::operator==(const List<V> &a, const List<V> &b)
-		{
-			for(DList tempa=a.front, DList tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
-				if(tempa.value != tempb.value)
-				return false;	
+		template<typename V> friend bool operator==(const List<V> &a, const List<V> &b){
+			for(Dlist tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value){
+				return false;
+				}	
 			}
-			if(x.size == size)
-			{
+			if(a.size == b.size){
 				return false;
 			}
-			else
-			{
+			else{
 				return true;
 			}
 		}
-		template<typename V> friend bool List::operator!=(const List<V> &a, const List<V> &b)
-		{
-			for(DList tempa=a.front, DList tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
-				if(tempa.value != tempb.value)
-				return true;	
+		template<typename V> friend bool operator!=(const List<V> &a, const List<V> &b){
+			for(Dlist tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value){
+				return true;
+				}	
 			}
-			if(x.size == size)
-			{
+			if(a.size == b.size){
 				return true;
 			}
-			else
-			{
+			else{
 				return false;
 			}
 		}
@@ -165,7 +161,7 @@ class List {
 		//CONVERT THIS FUNCTION
 		void pop_back() {
 			Dlist *back_to_remove = _back;
-			_back = back->prev;
+			_back = _back->prev;
 			if(_back==nullptr) {
 				_front = nullptr;
 			}
