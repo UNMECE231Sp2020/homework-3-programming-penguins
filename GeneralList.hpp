@@ -47,8 +47,30 @@ class List {
 			back = x.back;
 			return *this;
 		}
+		bool List::operator==(const List &x)
+		{
+			if(x.size == size && front == x.front && back == x.back)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 		
 
+		bool List::operator!=(const List &x)
+		{
+			if(x.size == size && front == x.front && back == x.back)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
 		Data &front() const {
 			return _front->value;
 		}
