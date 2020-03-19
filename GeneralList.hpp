@@ -46,13 +46,11 @@ class List {
 			front = x.front;
 			back = x.back;
 			Dlist *temp;
-			//while(!empty()) {
-			//	pop_front();
-			//}
+			
 			for(temp=x.front; temp!=nullptr; temp=temp->next) {
 				push_back(temp->value);
-
 			}
+			
 			return *this;
 		}
 		
