@@ -35,7 +35,6 @@ class List {
 
 		~List() {
 			while(!empty()) {
-			//while(_size > 0) {
 				pop_front();
 			}
 		
@@ -68,15 +67,34 @@ class List {
 		}
 		*/
 
-		bool List::operator!=(const List &x)
+		template<typename V> friend bool List::operator==(const List<V> &a, const List<V> &b)
 		{
-			if(x.size == size && front == x.front && back == x.back)
+			for(DList tempa=a.front, DList tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value)
+				return false;	
+			}
+			if(x.size == size)
 			{
 				return false;
 			}
 			else
 			{
 				return true;
+			}
+		}
+		template<typename V> friend bool List::operator!=(const List<V> &a, const List<V> &b)
+		{
+			for(DList tempa=a.front, DList tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value)
+				return true;	
+			}
+			if(x.size == size)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
 		Data &front() const {
