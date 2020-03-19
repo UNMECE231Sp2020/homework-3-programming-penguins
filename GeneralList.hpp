@@ -38,7 +38,16 @@ class List {
 			//while(_size > 0) {
 				pop_front();
 			}
+		
 		}
+
+		List List::operator=(const List &x){
+			size = x.size;
+			front = x.front;
+			back = x.back;
+			return *this;
+		}
+		
 
 		Data &front() const {
 			return _front->value;
