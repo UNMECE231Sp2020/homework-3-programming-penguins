@@ -67,32 +67,6 @@ class List {
 		}
 		*/
 
-		template<typename V> friend bool operator==(const List<V> &a, const List<V> &b){
-			for(Dlist tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
-				if(tempa.value != tempb.value){
-				return false;
-				}	
-			}
-			if(a.size == b.size){
-				return false;
-			}
-			else{
-				return true;
-			}
-		}
-		template<typename V> friend bool operator!=(const List<V> &a, const List<V> &b){
-			for(Dlist tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
-				if(tempa.value != tempb.value){
-				return true;
-				}	
-			}
-			if(a.size == b.size){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
 		Data &front() const {
 			return _front->value;
 		}
@@ -192,4 +166,58 @@ class List {
 			}
 			std::cout << std::endl;
 		}
+		template<typename V> friend bool operator==(const List<V> &a, const List<V> &b){
+
+			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value){
+				return false;
+				}	
+			}
+			if(a.size() == b.size()){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		template<typename V> friend bool operator!=(const List<V> &a, const List<V> &b){
+			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value){
+				return true;
+				}	
+			}
+			if(a.size() == b.size()){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
 };
+/*
+		template<typename V> bool operator==(const List<V> &a, const List<V> &b){
+			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value){
+				return false;
+				}	
+			}
+			if(a.size() == b.size()){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		template<typename V> bool operator!=(const List<V> &a, const List<V> &b){
+			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+				if(tempa.value != tempb.value){
+				return true;
+				}	
+			}
+			if(a.size() == b.size()){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}*/
