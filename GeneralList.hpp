@@ -160,19 +160,20 @@ class List {
 			}
 			std::cout << std::endl;
 		}
-		//TODO: Just declare them here, do not try to implement
-		//friend functions are INDEPENDENT of the class
-		//so they must be implemented outside of the class
 		template<typename V> friend bool operator==(const List<V> &a, const List<V> &b);
 		template<typename V> friend bool operator!=(const List<V> &a, const List<V> &b);
 };
-//TODO: you are on the right track here
 
 
-		template<typename V> bool operator==(const List<V> &a, const List<V> &b){
-			for(Dlist* tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+template<typename V>
+bool operator==(const List<V> &a, const List<V> &b){
+			//TODO: why don't you try the auto keyword?
+			for(Dlist* tempa=a.front, tempb=b.front; 
+					(tempa!=nullptr) || (tempb != nullptr); 
+					tempa=tempa->next, tempb = tempb->next) {
+
 				if(tempa->value != tempb->value){
-				return false;
+					return false;
 				}	
 			}
 			if(a.size() == b.size()){
@@ -183,6 +184,7 @@ class List {
 			}
 		}
 		template<typename V> bool operator!=(const List<V> &a, const List<V> &b){
+			//TODO: why don't you try the auto keyword?
 			for(Dlist* tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
 				if(tempa->value != tempb->value){
 				return true;
