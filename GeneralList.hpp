@@ -41,14 +41,12 @@ class List {
 
 		List &operator=(const List &x){
 			size = x.size;
-			front = x.front;
-			back = x.back;
 			Dlist *temp;
-			
+			front = temp;
 			for(temp=x.front; temp!=nullptr; temp=temp->next) {
 				push_back(temp->value);
 			}
-			
+			back = temp;
 			return *this;
 		}
 		
@@ -173,7 +171,7 @@ class List {
 template<typename V>
 bool operator==(const List<V> &a, const List<V> &b){
 			//TODO: why don't you try the auto keyword?
-			for(auto tempa=a.front, tempb=b.front; 
+			for(auto tempa=a._front, tempb=b._front; 
 					(tempa!=nullptr) || (tempb != nullptr); 
 					tempa=tempa->next, tempb = tempb->next) {
 
@@ -181,7 +179,7 @@ bool operator==(const List<V> &a, const List<V> &b){
 					return false;
 				}	
 			}
-			if(a.size() == b.size()){
+			if(a.size() != b.size()){
 				return false;
 			}
 			else{
@@ -190,12 +188,12 @@ bool operator==(const List<V> &a, const List<V> &b){
 		}
 		template<typename V> bool operator!=(const List<V> &a, const List<V> &b){
 			//TODO: why don't you try the auto keyword?
-			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+			for(auto tempa=a._front, tempb=b._front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
 				if(tempa->value != tempb->value){
 				return true;
 				}	
 			}
-			if(a.size() == b.size()){
+			if(a.size() != b.size()){
 				return true;
 			}
 			else{
