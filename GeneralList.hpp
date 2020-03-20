@@ -2,7 +2,12 @@
 template <class Data>
 class List {
 	private:
-
+		struct _list {
+			Data value;
+			struct _list *next;
+			struct _list *prev;
+		};
+		typedef struct _list Dlist;
 		size_t _size;
 		Dlist *_front;
 		Dlist *_back;
@@ -168,7 +173,7 @@ class List {
 template<typename V>
 bool operator==(const List<V> &a, const List<V> &b){
 			//TODO: why don't you try the auto keyword?
-			for(Dlist* tempa=a.front, tempb=b.front; 
+			for(auto tempa=a.front, tempb=b.front; 
 					(tempa!=nullptr) || (tempb != nullptr); 
 					tempa=tempa->next, tempb = tempb->next) {
 
@@ -185,7 +190,7 @@ bool operator==(const List<V> &a, const List<V> &b){
 		}
 		template<typename V> bool operator!=(const List<V> &a, const List<V> &b){
 			//TODO: why don't you try the auto keyword?
-			for(Dlist* tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
+			for(auto tempa=a.front, tempb=b.front; tempa!=nullptr || tempb != nullptr; tempa=tempa->next, tempb = tempb->next) {
 				if(tempa->value != tempb->value){
 				return true;
 				}	
